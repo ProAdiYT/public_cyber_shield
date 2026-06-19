@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Citizen Cyber Shield Console Authentication - Log in to access security operations, threat feeds, and scanning utilities.">
+  <title>Login | Citizen Cyber Shield Console</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cyber Background & Scanline Overlays -->
+  <div class="cyber-bg">
+    <div class="cyber-grid"></div>
+  </div>
+  <div class="cyber-scanline"></div>
+  <div class="cyber-scan-bar"></div>
+
+  <!-- Floating Cyber Objects -->
+  <div class="floating-objects">
+    <div class="floating-object hexagon" style="width: 70px; height: 70px; left: 15%; top: 20%;"></div>
+    <div class="floating-object circle obj-purple" style="width: 90px; height: 90px; right: 10%; bottom: 15%;"></div>
+  </div>
+
+  <!-- Main Login Container -->
+  <div class="auth-wrapper">
+    <div class="auth-panel cyber-panel corner-brackets">
+      
+      <div class="auth-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <h1 style="display:none;">Citizen Cyber Shield Account Login</h1> <!-- Hidden but present for H1 SEO/accessibility hierarchy -->
+        <h2>System Access</h2>
+        <p>Input credentials to establish secure SOC session</p>
+      </div>
+
+      <form id="login-form" autocomplete="off" onsubmit="handleLogin(event)">
+        <!-- Email Input -->
+        <div class="form-group">
+          <label for="login-email" class="form-label">User Identifier (Email)</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <input type="email" id="login-email" class="cyber-input" placeholder="agent@cybershield.gov" required>
+          </div>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <label for="login-password" class="form-label">Access Passkey</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <input type="password" id="login-password" class="cyber-input" placeholder="••••••••••••" required>
+            <button type="button" class="input-action" id="toggle-password" onclick="togglePasswordVisibility()">
+              <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Auth Options -->
+        <div class="auth-options">
+          <label class="checkbox-container" id="remember-me-label">
+            <input type="checkbox" id="remember-me">
+            <span class="custom-checkbox"></span>
+            Remember Console
+          </label>
+          <a href="#" class="auth-link" id="forgot-password-link">Forgot Key?</a>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-auth-submit" id="btn-login-submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+          Establish Session
+        </button>
+      </form>
+
+      <!-- Mock SOC Diagnostics Terminal -->
+      <div class="terminal-footer" id="login-terminal">
+        <div class="terminal-line success">SOC local channel opened.</div>
+        <div class="terminal-line">Waiting for key inputs...</div>
+      </div>
+
+      <div class="auth-footer-text">
+        Need credential access? <a href="signup.html" id="auth-signup-link">Register Shield ID</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="cyber-footer">
+    <p>Citizen Cyber Shield © 2026. Status: <span>OPERATIONAL</span></p>
+  </footer>
+
+  <script>
+    // Handle password show/hide
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('login-password');
+      const eyeIcon = document.getElementById('eye-icon');
+      
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        eyeIcon.innerHTML = `
+          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+          <line x1="1" y1="1" x2="23" y2="23"/>
+        `;
+      } else {
+        pwdInput.type = 'password';
+        eyeIcon.innerHTML = `
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        `;
+      }
+    }
+
+    // Mock terminal log updates
+    const terminal = document.getElementById('login-terminal');
+    function logToTerminal(message, type = '') {
+      const line = document.createElement('div');
+      line.className = `terminal-line ${type}`;
+      line.textContent = message;
+      terminal.appendChild(line);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    // Form submission mock handler
+    function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('login-email').value;
+      
+      logToTerminal(`Authenticating identifier: ${email}...`);
+      
+      setTimeout(() => {
+        logToTerminal('Validating encryption parameters...', 'success');
+        setTimeout(() => {
+          logToTerminal('Handshake confirmed. Routing to dashboard...', 'success');
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 1000);
+        }, 800);
+      }, 600);
+    }
+  </script>
+</body>
+</html>

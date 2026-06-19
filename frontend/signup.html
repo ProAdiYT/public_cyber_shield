@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register a secure Citizen Cyber Shield ID. Set up your personal threat center console and enable automated fraud scanning.">
+  <title>Register Shield ID | Citizen Cyber Shield Console</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cyber Background & Scanline Overlays -->
+  <div class="cyber-bg">
+    <div class="cyber-grid"></div>
+  </div>
+  <div class="cyber-scanline"></div>
+  <div class="cyber-scan-bar"></div>
+
+  <!-- Floating Cyber Objects -->
+  <div class="floating-objects">
+    <div class="floating-object hexagon obj-purple" style="width: 80px; height: 80px; left: 10%; bottom: 15%;"></div>
+    <div class="floating-object circle" style="width: 70px; height: 70px; right: 20%; top: 15%;"></div>
+  </div>
+
+  <!-- Main Register Container -->
+  <div class="auth-wrapper">
+    <div class="auth-panel cyber-panel corner-brackets purple-glow">
+      
+      <div class="auth-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="8.5" cy="7" r="4"/>
+          <line x1="20" y1="8" x2="20" y2="14"/>
+          <line x1="23" y1="11" x2="17" y2="11"/>
+        </svg>
+        <h1 style="display:none;">Citizen Cyber Shield Account Creation</h1> <!-- Hidden but present for H1 SEO/accessibility hierarchy -->
+        <h2>Register Shield ID</h2>
+        <p>Establish cryptographic credentials for security console access</p>
+      </div>
+
+      <form id="signup-form" autocomplete="off" onsubmit="handleSignup(event)">
+        <!-- Full Name Input -->
+        <div class="form-group">
+          <label for="signup-name" class="form-label">Full Name / Agent Alias</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <input type="text" id="signup-name" class="cyber-input" placeholder="Agent Maverick" required>
+          </div>
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+          <label for="signup-email" class="form-label">Secure Email Address</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <input type="email" id="signup-email" class="cyber-input" placeholder="agent@cybershield.gov" required>
+          </div>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <label for="signup-password" class="form-label">Access Passkey</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <input type="password" id="signup-password" class="cyber-input" placeholder="••••••••••••" oninput="validatePassword()" required>
+          </div>
+        </div>
+
+        <!-- Confirm Password Input -->
+        <div class="form-group">
+          <label for="signup-confirm-password" class="form-label">Confirm Passkey</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <input type="password" id="signup-confirm-password" class="cyber-input" placeholder="••••••••••••" oninput="validatePassword()" required>
+          </div>
+        </div>
+
+        <!-- Security Checklist -->
+        <div class="security-checklist">
+          <div class="checklist-title">Security Standards</div>
+          <div class="checklist-item" id="chk-length">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Minimum 8 Characters
+          </div>
+          <div class="checklist-item" id="chk-special">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Contains Number / Special Symbol
+          </div>
+          <div class="checklist-item" id="chk-match">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Passkeys Match
+          </div>
+        </div>
+
+        <!-- Accept Terms Checkbox -->
+        <div class="auth-options" style="margin-top: 15px; margin-bottom: 24px;">
+          <label class="checkbox-container" id="terms-container">
+            <input type="checkbox" id="accept-terms" required>
+            <span class="custom-checkbox"></span>
+            Accept Cyber Security Charter
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-auth-submit" id="btn-signup-submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="8.5" cy="7" r="4"/>
+          </svg>
+          Establish Shield ID
+        </button>
+      </form>
+
+      <!-- Mock SOC Diagnostics Terminal -->
+      <div class="terminal-footer" id="signup-terminal">
+        <div class="terminal-line">Awaiting registration parameters...</div>
+      </div>
+
+      <div class="auth-footer-text">
+        Already have a Shield ID? <a href="login.html" id="auth-login-link">Log In Here</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="cyber-footer">
+    <p>Citizen Cyber Shield © 2026. Status: <span>OPERATIONAL</span></p>
+  </footer>
+
+  <script>
+    // Validation variables
+    const passInput = document.getElementById('signup-password');
+    const confirmInput = document.getElementById('signup-confirm-password');
+    const chkLength = document.getElementById('chk-length');
+    const chkSpecial = document.getElementById('chk-special');
+    const chkMatch = document.getElementById('chk-match');
+    const terminal = document.getElementById('signup-terminal');
+
+    // Terminal Logging Helper
+    function logToTerminal(message, type = '') {
+      const line = document.createElement('div');
+      line.className = `terminal-line ${type}`;
+      line.textContent = message;
+      terminal.appendChild(line);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    // Dynamic password validation
+    function validatePassword() {
+      const val = passInput.value;
+      const confirmVal = confirmInput.value;
+
+      // 1. Length rule
+      if (val.length >= 8) {
+        chkLength.classList.add('valid');
+      } else {
+        chkLength.classList.remove('valid');
+      }
+
+      // 2. Special char/number rule
+      const hasSpecial = /[0-9!@#$%^&*(),.?":{}|<>]/.test(val);
+      if (hasSpecial) {
+        chkSpecial.classList.add('valid');
+      } else {
+        chkSpecial.classList.remove('valid');
+      }
+
+      // 3. Match rule
+      if (val === confirmVal && val !== "") {
+        chkMatch.classList.add('valid');
+      } else {
+        chkMatch.classList.remove('valid');
+      }
+    }
+
+    // Form submission mock handler
+    function handleSignup(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('signup-name').value;
+      const email = document.getElementById('signup-email').value;
+      
+      // Confirm all conditions met
+      const lengthOk = passInput.value.length >= 8;
+      const specialOk = /[0-9!@#$%^&*(),.?":{}|<>]/.test(passInput.value);
+      const matchOk = passInput.value === confirmInput.value;
+
+      if (!lengthOk || !specialOk || !matchOk) {
+        logToTerminal('Registration aborted. Password parameters failed system guidelines.', 'error');
+        return;
+      }
+
+      logToTerminal(`Generating keypair for Agent: ${name}...`);
+      
+      setTimeout(() => {
+        logToTerminal(`Binding credentials to ID: ${email}...`, 'success');
+        setTimeout(() => {
+          logToTerminal('Shield ID active. Launching console session...', 'success');
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 1000);
+        }, 800);
+      }, 600);
+    }
+  </script>
+</body>
+</html>

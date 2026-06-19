@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Citizen Cyber Shield URL Threat Analyzer - Analyze links, test security parameters, check SSL certificate validity and scan domain ages.">
+  <title>URL Threat Analyzer | Citizen Cyber Shield Console</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cyber Background & Scanline Overlays -->
+  <div class="cyber-bg">
+    <div class="cyber-grid"></div>
+  </div>
+  <div class="cyber-scanline"></div>
+  <div class="cyber-scan-bar"></div>
+
+  <!-- Floating Cyber Objects -->
+  <div class="floating-objects">
+    <div class="floating-object circle obj-purple" style="width: 80px; height: 80px; left: 15%; top: 15%;"></div>
+    <div class="floating-object hexagon" style="width: 100px; height: 100px; right: 10%; bottom: 20%;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="cyber-navbar">
+    <a href="index.html" class="navbar-logo" id="nav-brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      CITIZEN<span>CYBERSHIELD</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" id="nav-link-home">Home</a></li>
+        <li class="nav-item"><a href="dashboard.html" id="nav-link-dashboard">Console</a></li>
+        <li class="nav-item"><a href="sms.html" id="nav-link-sms">SMS Scan</a></li>
+        <li class="nav-item"><a href="url.html" id="nav-link-url" class="nav-active" style="color: var(--neon-blue); text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);">URL Scan</a></li>
+        <li class="nav-item"><a href="screenshot.html" id="nav-link-ocr">OCR Scan</a></li>
+        <li><a href="recovery.html" class="nav-btn-secondary" id="nav-btn-recovery">Recovery</a></li>
+        <li><a href="complaint.html" class="nav-btn" id="nav-btn-complaint">Complaint</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Live SOC Threat Stream Banner -->
+  <div class="soc-status-bar">
+    <div class="status-indicator">
+      <div class="status-dot" id="soc-status-dot"></div>
+      <span style="color: var(--neon-green)">DNS BLOCKLIST FEED: ACTIVE</span>
+    </div>
+    <div class="current-time" id="soc-live-time" style="color: var(--text-gray)">
+      SYSTEM_LIVE
+    </div>
+  </div>
+
+  <main style="max-width: 900px; margin: 40px auto; padding: 0 24px;">
+    <!-- Page Header -->
+    <div style="margin-bottom: 30px; border-bottom: 1px solid rgba(0, 240, 255, 0.1); padding-bottom: 15px;">
+      <h1 style="font-family: var(--font-cyber); font-size: 1.8rem; letter-spacing: 2px; text-transform: uppercase;">
+        URL Threat Analyzer
+      </h1>
+      <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 5px;">Input suspicious website links, landing pages, or redirect links to test domain structures, TLD threat risks, and SSL certifications</p>
+    </div>
+
+    <!-- Scanner Interface -->
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <!-- Input Card -->
+      <div class="cyber-panel corner-brackets purple-glow">
+        <label for="url-input" class="form-label" style="margin-bottom: 12px;">Suspicious URL Domain</label>
+        <div class="form-group" style="margin-bottom: 15px;">
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <input type="text" id="url-input" class="cyber-input" style="padding-left: 42px;" placeholder="http://login-verify-account-security.xyz/update">
+          </div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-gray);">DNS RESOLVER: ROOT TLD CORE</span>
+          <button onclick="runURLAnalysis()" class="btn-cyber-secondary" id="btn-url-scan" style="padding: 10px 24px;">
+            <svg style="width: 16px; height: 16px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            Analyze URL
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-time Diagnostic Log Terminal -->
+      <div class="cyber-panel" style="padding: 16px;">
+        <div class="checklist-title" style="margin-bottom: 10px;">URL Sandbox Diagnostic Terminal Logs</div>
+        <div class="terminal-footer" id="url-terminal" style="max-height: 120px;">
+          <div class="terminal-line success">SOC console ready for inputs...</div>
+        </div>
+      </div>
+
+      <!-- Analysis Results Card (Hidden by default) -->
+      <div class="cyber-panel corner-brackets" id="url-results" style="display: none;">
+        <h2 style="font-family: var(--font-cyber); font-size: 1.1rem; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;">
+          Assessment Summary
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px;">
+          <!-- Severity meter -->
+          <div style="border: 1px solid rgba(0, 240, 255, 0.15); background: rgba(6, 8, 19, 0.6); padding: 16px; border-radius: 6px; text-align: center;">
+            <div style="font-family: var(--font-cyber); font-size: 0.75rem; color: var(--text-gray); text-transform: uppercase;">Phish Severity</div>
+            <div id="url-severity" style="font-family: var(--font-cyber); font-size: 1.25rem; font-weight: 700; margin-top: 10px;">SAFE</div>
+          </div>
+          <!-- Score meter -->
+          <div style="border: 1px solid rgba(0, 240, 255, 0.15); background: rgba(6, 8, 19, 0.6); padding: 16px; border-radius: 6px; text-align: center;">
+            <div style="font-family: var(--font-cyber); font-size: 0.75rem; color: var(--text-gray); text-transform: uppercase;">Phish Index</div>
+            <div id="url-score" style="font-family: var(--font-cyber); font-size: 1.25rem; font-weight: 700; color: var(--neon-purple-bright); text-shadow: 0 0 10px rgba(189, 0, 255, 0.3); margin-top: 10px;">0%</div>
+          </div>
+        </div>
+
+        <!-- Telemetry Data -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px; border-top: 1px dashed rgba(0, 240, 255, 0.15); padding-top: 20px;">
+          <div>
+            <div style="font-family: var(--font-cyber); font-size: 0.7rem; color: var(--text-gray); text-transform: uppercase;">SSL Certificate Status</div>
+            <div id="url-ssl" style="font-family: var(--font-mono); font-size: 0.95rem; margin-top: 6px; font-weight: 700;">VALID (HTTPS)</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-cyber); font-size: 0.7rem; color: var(--text-gray); text-transform: uppercase;">Domain Registration Age</div>
+            <div id="url-age" style="font-family: var(--font-mono); font-size: 0.95rem; margin-top: 6px; color: var(--text-light);">4 Years, 2 Months</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="checklist-title" style="margin-bottom: 12px;">Matched Threat Indicators</div>
+          <ul id="url-findings" style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; color: var(--text-light);">
+            <!-- Dynamic findings go here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <p>Citizen Cyber Shield © 2026. Status: <span>OPERATIONAL</span></p>
+  </footer>
+
+  <!-- Import app logic controller -->
+  <script src="js/app.js"></script>
+  <script>
+    function updateSOCTime() {
+      const timeEl = document.getElementById('soc-live-time');
+      const now = new Date();
+      timeEl.textContent = `SYSTEM_TIME: ${now.toISOString().replace('T', ' ').substring(0, 19)} UTC`;
+    }
+    setInterval(updateSOCTime, 1000);
+    updateSOCTime();
+  </script>
+</body>
+</html>

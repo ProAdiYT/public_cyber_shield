@@ -1,0 +1,49 @@
+.hero{
+text-align:center;
+padding:30px;
+border-radius:20px;
+margin-bottom:20px;
+
+```
+background:
+linear-gradient(
+135deg,
+#08111f,
+#0d1b2a,
+#13293d
+);
+
+box-shadow:
+0 0 20px #00e5ff;
+```
+
+}
+
+.hero h1{
+color:#00e5ff;
+font-size:3rem;
+}
+
+.hero p{
+color:white;
+font-size:1.2rem;
+}
+
+.stButton>button{
+background:#00e5ff;
+color:black;
+border-radius:10px;
+font-weight:bold;
+}
+
+.stButton>button:hover{
+background:#00bcd4;
+transform:scale(1.05);
+}
+
+div[data-testid="stMetric"]{
+background:#111827;
+padding:15px;
+border-radius:15px;
+border:1px solid #00e5ff;
+}

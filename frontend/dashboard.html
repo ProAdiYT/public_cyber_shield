@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Citizen Cyber Shield SOC Dashboard - Real-time network telemetry, risk assessments, threat analytics, and threat containment interfaces.">
+  <title>SOC Dashboard | Citizen Cyber Shield Console</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cyber Background & Scanline Overlays -->
+  <div class="cyber-bg">
+    <div class="cyber-grid"></div>
+  </div>
+  <div class="cyber-scanline"></div>
+  <div class="cyber-scan-bar"></div>
+
+  <!-- Floating Cyber Objects -->
+  <div class="floating-objects">
+    <div class="floating-object circle" style="width: 90px; height: 90px; left: 5%; bottom: 10%;"></div>
+    <div class="floating-object hexagon obj-purple" style="width: 70px; height: 70px; right: 8%; top: 12%;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="cyber-navbar">
+    <a href="index.html" class="navbar-logo" id="nav-brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      CITIZEN<span>CYBERSHIELD</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" id="nav-link-home">Home</a></li>
+        <li class="nav-item"><a href="dashboard.html" id="nav-link-dashboard" class="nav-active" style="color: var(--neon-blue); text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);">Console</a></li>
+        <li class="nav-item"><a href="sms.html" id="nav-link-sms">SMS Scan</a></li>
+        <li class="nav-item"><a href="url.html" id="nav-link-url">URL Scan</a></li>
+        <li class="nav-item"><a href="screenshot.html" id="nav-link-ocr">OCR Scan</a></li>
+        <li><a href="recovery.html" class="nav-btn-secondary" id="nav-btn-recovery">Recovery</a></li>
+        <li><a href="complaint.html" class="nav-btn" id="nav-btn-complaint">Complaint</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Live SOC Threat Stream Banner -->
+  <div class="soc-status-bar">
+    <div class="status-indicator">
+      <div class="status-dot" id="soc-status-dot"></div>
+      <span style="color: var(--neon-green)">SHIELD LEVEL: 98.4%</span>
+    </div>
+    <div class="feed-scroller">
+      <div class="feed-items">
+        <span class="feed-item">🔒 <span>Firewall:</span> Port 443 sniffing attempt blocked.</span>
+        <span class="feed-item">🔬 <span>Scanner:</span> Analyzed screenshot #419. Clean result.</span>
+        <span class="feed-item">🧠 <span>AI Agent:</span> Fraud recovery template compiled successfully.</span>
+      </div>
+    </div>
+    <div class="current-time" id="soc-live-time" style="color: var(--text-gray)">
+      SYSTEM_LIVE
+    </div>
+  </div>
+
+  <main style="max-width: 1300px; margin: 40px auto; padding: 0 24px;">
+    <!-- Main Dashboard Title -->
+    <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(0, 240, 255, 0.1); padding-bottom: 15px;">
+      <div>
+        <h1 style="font-family: var(--font-cyber); font-size: 1.8rem; letter-spacing: 2px; text-transform: uppercase;">
+          SOC Console Overview
+        </h1>
+        <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 5px;">Threat intelligence, logging feed, and system modules</p>
+      </div>
+      <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--neon-blue); background: rgba(0, 240, 255, 0.05); padding: 6px 12px; border: 1px dashed var(--border-neon-blue); border-radius: 4px;">
+        NODE ID: CCS-394A
+      </div>
+    </div>
+
+    <!-- Grid Layout for Stats Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
+      <!-- Card 1 -->
+      <div class="cyber-panel corner-brackets" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 140px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <div style="font-family: var(--font-cyber); font-size: 0.75rem; letter-spacing: 1px; color: var(--text-gray); text-transform: uppercase;">Scans Completed</div>
+            <div style="font-family: var(--font-cyber); font-size: 2.2rem; font-weight: 900; color: var(--neon-blue); text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); margin-top: 10px;">1,489</div>
+          </div>
+          <svg style="width: 28px; height: 28px; color: var(--neon-blue);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--neon-green); font-family: var(--font-mono); margin-top: 10px;">↑ 12% FROM YESTERDAY</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="cyber-panel corner-brackets purple-glow" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 140px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <div style="font-family: var(--font-cyber); font-size: 0.75rem; letter-spacing: 1px; color: var(--text-gray); text-transform: uppercase;">Threats Quarantined</div>
+            <div style="font-family: var(--font-cyber); font-size: 2.2rem; font-weight: 900; color: var(--neon-purple-bright); text-shadow: 0 0 10px rgba(189, 0, 255, 0.3); margin-top: 10px;">124</div>
+          </div>
+          <svg style="width: 28px; height: 28px; color: var(--neon-purple-bright);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--neon-red); font-family: var(--font-mono); margin-top: 10px;">🚨 4 ACTIVE THREAT ALERTS</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="cyber-panel corner-brackets" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 140px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <div style="font-family: var(--font-cyber); font-size: 0.75rem; letter-spacing: 1px; color: var(--text-gray); text-transform: uppercase;">Global Shield Status</div>
+            <div style="font-family: var(--font-cyber); font-size: 2.2rem; font-weight: 900; color: var(--neon-green); text-shadow: 0 0 10px rgba(57, 255, 20, 0.3); margin-top: 10px;">SECURE</div>
+          </div>
+          <svg style="width: 28px; height: 28px; color: var(--neon-green);" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-gray); font-family: var(--font-mono); margin-top: 10px;">DEFENSIVE SHIELD ACTIVE</div>
+      </div>
+    </div>
+
+    <!-- Main Workspace Layout -->
+    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: start;">
+      <!-- Left Column: Interactive Logs & Modules Navigation -->
+      <div style="display: flex; flex-direction: column; gap: 30px;">
+        
+        <!-- Quick Scan Launcher -->
+        <div class="cyber-panel">
+          <h2 style="font-family: var(--font-cyber); font-size: 1.1rem; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;">
+            Threat Assessment Launchpads
+          </h2>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <a href="sms.html" style="text-decoration: none;" id="btn-dash-sms">
+              <div style="border: 1px solid rgba(0, 240, 255, 0.2); background: rgba(0, 240, 255, 0.02); padding: 20px 10px; border-radius: 6px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--neon-blue)'; this.style.boxShadow='var(--glow-blue)'" onmouseout="this.style.borderColor='rgba(0, 240, 255, 0.2)'; this.style.boxShadow='none'">
+                <div style="color: var(--neon-blue); font-size: 1.5rem; margin-bottom: 8px;">💬</div>
+                <div style="font-family: var(--font-cyber); font-size: 0.75rem; color: var(--text-light); text-transform: uppercase;">SMS Scam</div>
+              </div>
+            </a>
+            <a href="url.html" style="text-decoration: none;" id="btn-dash-url">
+              <div style="border: 1px solid rgba(157, 78, 221, 0.2); background: rgba(157, 78, 221, 0.02); padding: 20px 10px; border-radius: 6px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--neon-purple)'; this.style.boxShadow='var(--glow-purple)'" onmouseout="this.style.borderColor='rgba(157, 78, 221, 0.2)'; this.style.boxShadow='none'">
+                <div style="color: var(--neon-purple-bright); font-size: 1.5rem; margin-bottom: 8px;">🔗</div>
+                <div style="font-family: var(--font-cyber); font-size: 0.75rem; color: var(--text-light); text-transform: uppercase;">URL Scan</div>
+              </div>
+            </a>
+            <a href="screenshot.html" style="text-decoration: none;" id="btn-dash-ocr">
+              <div style="border: 1px solid rgba(0, 240, 255, 0.2); background: rgba(0, 240, 255, 0.02); padding: 20px 10px; border-radius: 6px; text-align: center; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--neon-blue)'; this.style.boxShadow='var(--glow-blue)'" onmouseout="this.style.borderColor='rgba(0, 240, 255, 0.2)'; this.style.boxShadow='none'">
+                <div style="color: var(--neon-blue); font-size: 1.5rem; margin-bottom: 8px;">📸</div>
+                <div style="font-family: var(--font-cyber); font-size: 0.75rem; color: var(--text-light); text-transform: uppercase;">OCR Scanner</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recent Logs -->
+        <div class="cyber-panel">
+          <h2 style="font-family: var(--font-cyber); font-size: 1.1rem; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;">
+            Incident History Log
+          </h2>
+          <div style="display: flex; flex-direction: column; gap: 12px; font-family: var(--font-mono); font-size: 0.8rem;">
+            
+            <div style="border-left: 3px solid var(--neon-red); padding-left: 14px; background: rgba(255, 49, 49, 0.03); padding-top: 8px; padding-bottom: 8px;">
+              <div style="display: flex; justify-content: space-between; color: var(--neon-red);">
+                <span>[HIGH THREAT] Phishing URL Blocked</span>
+                <span>15:42 UTC</span>
+              </div>
+              <p style="color: var(--text-gray); margin-top: 4px;">Target: http://card-verify-login.xyz/index.html | Origin: 104.22.4.9</p>
+            </div>
+
+            <div style="border-left: 3px solid var(--neon-purple-bright); padding-left: 14px; background: rgba(157, 78, 221, 0.03); padding-top: 8px; padding-bottom: 8px;">
+              <div style="display: flex; justify-content: space-between; color: var(--neon-purple-bright);">
+                <span>[WARNING] Suspicious SMS Flagged</span>
+                <span>12:11 UTC</span>
+              </div>
+              <p style="color: var(--text-gray); margin-top: 4px;">"Your package delivery has failed. Update details at..." | Score: 52%</p>
+            </div>
+
+            <div style="border-left: 3px solid var(--neon-green); padding-left: 14px; background: rgba(57, 255, 20, 0.03); padding-top: 8px; padding-bottom: 8px;">
+              <div style="display: flex; justify-content: space-between; color: var(--neon-green);">
+                <span>[CLEAN] Screenshot Scanned</span>
+                <span>Yesterday</span>
+              </div>
+              <p style="color: var(--text-gray); margin-top: 4px;">OCR engine parsed "bank_receipt_294.png". 0 threat vectors detected.</p>
+            </div>
+
+            <div style="border-left: 3px solid var(--neon-green); padding-left: 14px; background: rgba(57, 255, 20, 0.03); padding-top: 8px; padding-bottom: 8px;">
+              <div style="display: flex; justify-content: space-between; color: var(--neon-green);">
+                <span>[CLEAN] Safe URL Approved</span>
+                <span>Yesterday</span>
+              </div>
+              <p style="color: var(--text-gray); margin-top: 4px;">Target: https://github.com/login | Verified secure SSL certificate.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Visual Telemetry Graph -->
+      <div class="cyber-panel purple-glow" style="min-height: 480px; display: flex; flex-direction: column;">
+        <h2 style="font-family: var(--font-cyber); font-size: 1.1rem; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;">
+          SOC Threat Heuristics
+        </h2>
+        
+        <!-- Dynamic Chart Simulation using CSS Elements -->
+        <div style="flex-grow: 1; border: 1px solid rgba(157, 78, 221, 0.15); background: rgba(6, 8, 19, 0.6); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+          <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-gray);">
+            <span>SEVERITY CHART LEVEL</span>
+            <span>UPDATED_NOW</span>
+          </div>
+
+          <!-- CSS Bar chart -->
+          <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 220px; margin-top: 20px; margin-bottom: 20px; border-bottom: 1px solid rgba(0, 240, 255, 0.2); padding-bottom: 10px;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+              <div style="width: 25px; height: 180px; background: linear-gradient(to top, var(--neon-purple), var(--neon-purple-bright)); border-radius: 4px 4px 0 0; box-shadow: var(--glow-purple);"></div>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-gray);">SMS</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+              <div style="width: 25px; height: 140px; background: linear-gradient(to top, var(--neon-blue), var(--neon-cyan)); border-radius: 4px 4px 0 0; box-shadow: var(--glow-blue);"></div>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-gray);">URL</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+              <div style="width: 25px; height: 90px; background: linear-gradient(to top, var(--neon-purple), var(--neon-blue)); border-radius: 4px 4px 0 0;"></div>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-gray);">OCR</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+              <div style="width: 25px; height: 40px; background: linear-gradient(to top, var(--neon-green), transparent); border-radius: 4px 4px 0 0;"></div>
+              <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-gray);">SEC</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.8rem;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="width: 10px; height: 10px; background: var(--neon-purple-bright); border-radius: 50%; display: inline-block;"></span>
+              <span style="color: var(--text-gray);">Total attacks scanned: <b>1,489 instances</b></span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="width: 10px; height: 10px; background: var(--neon-blue); border-radius: 50%; display: inline-block;"></span>
+              <span style="color: var(--text-gray);">Clean/Safe ratio: <b>91.67% accuracy rating</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Recovery Shortcut -->
+        <div style="margin-top: 20px; text-align: center;">
+          <a href="recovery.html" class="btn-cyber-primary" style="width: 100%; display: flex; justify-content: center; padding: 12px;" id="btn-dash-containment">
+            <svg style="width: 18px; height: 18px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            Trigger Fraud Containment
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <p>Citizen Cyber Shield © 2026. Status: <span>OPERATIONAL</span></p>
+  </footer>
+
+  <script>
+    function updateSOCTime() {
+      const timeEl = document.getElementById('soc-live-time');
+      const now = new Date();
+      timeEl.textContent = `SYSTEM_TIME: ${now.toISOString().replace('T', ' ').substring(0, 19)} UTC`;
+    }
+    setInterval(updateSOCTime, 1000);
+    updateSOCTime();
+  </script>
+</body>
+</html>

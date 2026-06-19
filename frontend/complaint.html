@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Citizen Cyber Shield Complaint Generator - Automatically compile incident facts, transaction metrics, and evidence formats into printable cyber cell letters.">
+  <title>Cyber Complaint Generator | Citizen Cyber Shield Console</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cyber Background & Scanline Overlays -->
+  <div class="cyber-bg">
+    <div class="cyber-grid"></div>
+  </div>
+  <div class="cyber-scanline"></div>
+  <div class="cyber-scan-bar"></div>
+
+  <!-- Floating Cyber Objects -->
+  <div class="floating-objects">
+    <div class="floating-object circle" style="width: 80px; height: 80px; left: 15%; top: 15%;"></div>
+    <div class="floating-object hexagon obj-purple" style="width: 90px; height: 90px; right: 12%; bottom: 15%;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="cyber-navbar">
+    <a href="index.html" class="navbar-logo" id="nav-brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      CITIZEN<span>CYBERSHIELD</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" id="nav-link-home">Home</a></li>
+        <li class="nav-item"><a href="dashboard.html" id="nav-link-dashboard">Console</a></li>
+        <li class="nav-item"><a href="sms.html" id="nav-link-sms">SMS Scan</a></li>
+        <li class="nav-item"><a href="url.html" id="nav-link-url">URL Scan</a></li>
+        <li class="nav-item"><a href="screenshot.html" id="nav-link-ocr">OCR Scan</a></li>
+        <li><a href="recovery.html" class="nav-btn-secondary" id="nav-btn-recovery">Recovery</a></li>
+        <li><a href="complaint.html" class="nav-btn nav-active" id="nav-btn-complaint" style="background: transparent; color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);">Complaint</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Live SOC Threat Stream Banner -->
+  <div class="soc-status-bar">
+    <div class="status-indicator">
+      <div class="status-dot" id="soc-status-dot"></div>
+      <span style="color: var(--neon-green)">COMPLAINT ENGINE: ONLINE</span>
+    </div>
+    <div class="current-time" id="soc-live-time" style="color: var(--text-gray)">
+      SYSTEM_LIVE
+    </div>
+  </div>
+
+  <main style="max-width: 1000px; margin: 40px auto; padding: 0 24px;">
+    <!-- Page Header -->
+    <div style="margin-bottom: 30px; border-bottom: 1px solid rgba(0, 240, 255, 0.1); padding-bottom: 15px;">
+      <h1 style="font-family: var(--font-cyber); font-size: 1.8rem; letter-spacing: 2px; text-transform: uppercase;">
+        Cyber Incident Report Generator
+      </h1>
+      <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 5px;">Compile transaction details, timestamps, attacker phone numbers, or account details into a professionally-styled incident report ready for legal submission</p>
+    </div>
+
+    <!-- Workspace Layout -->
+    <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 30px; align-items: start;">
+      
+      <!-- Input Form -->
+      <div class="cyber-panel corner-brackets">
+        <h2 style="font-family: var(--font-cyber); font-size: 1.1rem; letter-spacing: 1px; margin-bottom: 24px; text-transform: uppercase;">Incident Parameters</h2>
+        <form id="complaint-form" onsubmit="generateComplaintText(event)">
+          <!-- Name -->
+          <div class="form-group">
+            <label for="victim-name" class="form-label">Victim Full Name</label>
+            <input type="text" id="victim-name" class="cyber-input" style="padding-left: 16px;" placeholder="John Doe" required>
+          </div>
+
+          <!-- Incident Type -->
+          <div class="form-group">
+            <label for="scam-type" class="form-label">Classification of Scam</label>
+            <select id="scam-type" class="cyber-input" style="padding-left: 16px; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=%22%2394a3b8%22 height=%2224%22 viewBox=%220 0 24 24%22 width=%2224%22 xmlns=%22http://www.w3.org/2000/svg%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;" required>
+              <option value="Smishing / SMS Phishing">Smishing / SMS Phishing</option>
+              <option value="Banking Phishing Website">Banking Phishing Website</option>
+              <option value="Identity Theft / Data Leak">Identity Theft / Data Leak</option>
+              <option value="Unregulated Loan trap">Unregulated Loan Trap</option>
+              <option value="Other Financial Fraud">Other Financial Fraud</option>
+            </select>
+          </div>
+
+          <!-- Platform -->
+          <div class="form-group">
+            <label for="scam-platform" class="form-label">Scam Channel (Platform)</label>
+            <input type="text" id="scam-platform" class="cyber-input" style="padding-left: 16px;" placeholder="WhatsApp / SMS / Telegram / Chrome Browser" required>
+          </div>
+
+          <!-- Target Info -->
+          <div class="form-group">
+            <label for="scam-target-info" class="form-label">Attacker Identifier (Phone / Card / URL)</label>
+            <input type="text" id="scam-target-info" class="cyber-input" style="padding-left: 16px;" placeholder="URL, phone number or bank account" required>
+          </div>
+
+          <!-- Date & Time -->
+          <div class="form-group">
+            <label for="scam-date" class="form-label">Incident Timestamp</label>
+            <input type="datetime-local" id="scam-date" class="cyber-input" style="padding-left: 16px;" required>
+          </div>
+
+          <!-- Amount lost -->
+          <div class="form-group">
+            <label for="scam-amount" class="form-label">Financial Value (USD Loss)</label>
+            <input type="number" step="0.01" id="scam-amount" class="cyber-input" style="padding-left: 16px;" placeholder="500.00 (Optional)">
+          </div>
+
+          <!-- Brief description -->
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label for="scam-description" class="form-label">Incident Summary (Chronology)</label>
+            <textarea id="scam-description" class="cyber-input" style="height: 100px; padding: 12px; resize: none;" placeholder="Provide brief summary of steps taken, communication logs, bank withdrawals..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-auth-submit" id="btn-submit-complaint">
+            <svg style="width: 16px; height: 16px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Generate Complaint File
+          </button>
+        </form>
+      </div>
+
+      <!-- Template Output Preview -->
+      <div class="cyber-panel corner-brackets purple-glow" id="complaint-results" style="display: none; min-height: 480px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 style="font-family: var(--font-cyber); font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase;">Compiled Incident File</h2>
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--neon-purple-bright);">PDF FORMAT READY</span>
+        </div>
+
+        <textarea id="complaint-output" class="cyber-input" style="width: 100%; height: 360px; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.4; resize: none; background: rgba(3, 3, 7, 0.8); border-color: rgba(157, 78, 221, 0.2); padding: 16px; border-radius: 6px; margin-bottom: 20px;" readonly></textarea>
+
+        <div style="display: flex; gap: 15px;">
+          <button onclick="copyComplaint()" class="btn-cyber-primary" id="btn-copy" style="flex: 1; justify-content: center; font-size: 0.85rem; padding: 12px 10px;">
+            <svg style="width: 16px; height: 16px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+            </svg>
+            Copy Text
+          </button>
+          <button onclick="printComplaint()" class="btn-cyber-secondary" id="btn-print" style="flex: 1; justify-content: center; font-size: 0.85rem; padding: 12px 10px;">
+            <svg style="width: 16px; height: 16px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-5a2 2 0 00-2-2H5a2 2 0 00-2 2v5a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-3a2 2 0 00-2-2H9a2 2 0 00-2 2v3a2 2 0 002 2zm0-11V4a2 2 0 012-2h4a2 2 0 012 2v3"/>
+            </svg>
+            Print/Save PDF
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <p>Citizen Cyber Shield © 2026. Status: <span>OPERATIONAL</span></p>
+  </footer>
+
+  <!-- Import app logic controller -->
+  <script src="js/app.js"></script>
+  <script>
+    function updateSOCTime() {
+      const timeEl = document.getElementById('soc-live-time');
+      const now = new Date();
+      timeEl.textContent = `SYSTEM_TIME: ${now.toISOString().replace('T', ' ').substring(0, 19)} UTC`;
+    }
+    setInterval(updateSOCTime, 1000);
+    updateSOCTime();
+    
+    // Set default value for incident timestamp
+    const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, 16);
+    document.getElementById('scam-date').value = localISOTime;
+  </script>
+</body>
+</html>

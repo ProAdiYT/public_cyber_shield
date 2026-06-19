@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Citizen Cyber Shield Fraud Recovery Assistant - Step-by-step containment checklists, banking emergency hotlines, and security guides.">
+  <title>Fraud Recovery Assistant | Citizen Cyber Shield Console</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Checklist Custom Styles */
+    .checklist-group {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 15px;
+    }
+    .checklist-group li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px;
+      background: rgba(6, 8, 19, 0.4);
+      border: 1px solid rgba(0, 240, 255, 0.08);
+      border-radius: 6px;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .checklist-group li:hover {
+      border-color: rgba(0, 240, 255, 0.2);
+      background: rgba(6, 8, 19, 0.65);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cyber Background & Scanline Overlays -->
+  <div class="cyber-bg">
+    <div class="cyber-grid"></div>
+  </div>
+  <div class="cyber-scanline"></div>
+  <div class="cyber-scan-bar"></div>
+
+  <!-- Floating Cyber Objects -->
+  <div class="floating-objects">
+    <div class="floating-object hexagon obj-purple" style="width: 70px; height: 70px; left: 10%; bottom: 15%;"></div>
+    <div class="floating-object circle" style="width: 90px; height: 90px; right: 10%; top: 15%;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="cyber-navbar">
+    <a href="index.html" class="navbar-logo" id="nav-brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      CITIZEN<span>CYBERSHIELD</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" id="nav-link-home">Home</a></li>
+        <li class="nav-item"><a href="dashboard.html" id="nav-link-dashboard">Console</a></li>
+        <li class="nav-item"><a href="sms.html" id="nav-link-sms">SMS Scan</a></li>
+        <li class="nav-item"><a href="url.html" id="nav-link-url">URL Scan</a></li>
+        <li class="nav-item"><a href="screenshot.html" id="nav-link-ocr">OCR Scan</a></li>
+        <li><a href="recovery.html" class="nav-btn-secondary nav-active" id="nav-btn-recovery" style="color: var(--neon-purple-bright); text-shadow: 0 0 8px rgba(189, 0, 255, 0.5);">Recovery</a></li>
+        <li><a href="complaint.html" class="nav-btn" id="nav-btn-complaint">Complaint</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Live SOC Threat Stream Banner -->
+  <div class="soc-status-bar">
+    <div class="status-indicator">
+      <div class="status-dot alert" id="soc-status-dot"></div>
+      <span style="color: var(--neon-red)">CONTAINMENT PROTOCOL: ACTIVE</span>
+    </div>
+    <div class="current-time" id="soc-live-time" style="color: var(--text-gray)">
+      SYSTEM_LIVE
+    </div>
+  </div>
+
+  <main style="max-width: 1000px; margin: 40px auto; padding: 0 24px;">
+    <!-- Page Header -->
+    <div style="margin-bottom: 30px; border-bottom: 1px solid rgba(255, 49, 49, 0.15); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end;">
+      <div>
+        <h1 style="font-family: var(--font-cyber); font-size: 1.8rem; letter-spacing: 2px; color: var(--text-light); text-transform: uppercase;">
+          Fraud Recovery Assistant
+        </h1>
+        <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 5px;">Follow structured mitigation actions to contain leaks, preserve logs, block accounts, and report compromises</p>
+      </div>
+      <div id="recovery-pct-text" style="font-family: var(--font-cyber); font-size: 0.9rem; color: var(--neon-blue); font-weight: 700; letter-spacing: 1px;">
+        0% Actions Secured
+      </div>
+    </div>
+
+    <!-- Progress Indicator Bar -->
+    <div style="width: 100%; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; margin-bottom: 40px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.1);">
+      <div id="recovery-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); box-shadow: var(--glow-blue); transition: width 0.4s ease;"></div>
+    </div>
+
+    <!-- Threat Parameter Selectors -->
+    <div class="cyber-panel corner-brackets" style="margin-bottom: 30px;">
+      <h2 style="font-family: var(--font-cyber); font-size: 1.05rem; letter-spacing: 1px; color: var(--neon-blue); text-transform: uppercase; margin-bottom: 20px;">Configure Mitigation Vectors</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: flex-end;">
+        <div>
+          <label for="recovery-threat-type" class="form-label">Incident Threat Vector</label>
+          <select id="recovery-threat-type" class="cyber-input" style="padding-left: 16px; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=%22%2394a3b8%22 height=%2224%22 viewBox=%220 0 24 24%22 width=%2224%22 xmlns=%22http://www.w3.org/2000/svg%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
+            <option value="UPI Fraud">UPI Fraud</option>
+            <option value="Banking Fraud">Banking Fraud</option>
+            <option value="OTP Scam">OTP Scam</option>
+            <option value="KYC Fraud">KYC Fraud</option>
+            <option value="Job Scam">Job Scam</option>
+            <option value="Investment Scam">Investment Scam</option>
+            <option value="Lottery Scam">Lottery Scam</option>
+            <option value="QR Scam">QR Scam</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="recovery-bank" class="form-label">Selected Institution (Bank)</label>
+          <select id="recovery-bank" class="cyber-input" style="padding-left: 16px; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg fill=%22%2394a3b8%22 height=%2224%22 viewBox=%220 0 24 24%22 width=%2224%22 xmlns=%22http://www.w3.org/2000/svg%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
+            <option value="SBI">SBI (State Bank of India)</option>
+            <option value="HDFC">HDFC Bank</option>
+            <option value="ICICI">ICICI Bank</option>
+          </select>
+        </div>
+        
+        <button onclick="loadRecoveryPlan()" class="btn-cyber-primary" style="padding: 12px; justify-content: center; width: 100%;" id="btn-load-plan">
+          Generate Containment Steps
+        </button>
+      </div>
+    </div>
+
+    <!-- Checklist & Resources Grid -->
+    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: start;">
+      
+      <!-- Checklists -->
+      <div style="display: flex; flex-direction: column; gap: 30px;">
+        
+        <!-- Priority actions -->
+        <div class="cyber-panel corner-brackets purple-glow">
+          <h2 style="font-family: var(--font-cyber); font-size: 1.05rem; letter-spacing: 1px; color: var(--neon-purple-bright); text-shadow: 0 0 5px rgba(157, 78, 221, 0.3); text-transform: uppercase;" id="recovery-steps-title">
+            Immediate Incident Containment
+          </h2>
+          <ul class="checklist-group" id="recovery-steps-list">
+            <!-- Dynamic checklists populated via app.js -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Emergency Directory -->
+      <div class="cyber-panel" style="min-height: 400px;">
+        <h2 style="font-family: var(--font-cyber); font-size: 1.05rem; letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;">
+          Security Directory
+        </h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <!-- Resource Item 1 -->
+          <div style="border-bottom: 1px solid rgba(0, 240, 255, 0.1); padding-bottom: 12px;">
+            <div style="font-family: var(--font-cyber); font-size: 0.8rem; color: var(--neon-blue); text-transform: uppercase; margin-bottom: 4px;">National Cyber Hotline</div>
+            <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; color: var(--text-light);">1930 (Immediate Response)</div>
+            <p style="font-size: 0.75rem; color: var(--text-gray); margin-top: 4px;">Call within 2 hours of transaction for higher recovery success rates.</p>
+          </div>
+
+          <!-- Resource Item 2 -->
+          <div style="border-bottom: 1px solid rgba(0, 240, 255, 0.1); padding-bottom: 12px;">
+            <div style="font-family: var(--font-cyber); font-size: 0.8rem; color: var(--neon-purple-bright); text-transform: uppercase; margin-bottom: 4px;">Selected Bank Support</div>
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: var(--text-light);" id="recovery-bank-helpline">Awaiting Institution Config...</div>
+            <p style="font-size: 0.75rem; color: var(--text-gray); margin-top: 4px;">Helpline number of your selected bank.</p>
+          </div>
+
+          <!-- Resource Item 3 -->
+          <div>
+            <div style="font-family: var(--font-cyber); font-size: 0.8rem; color: var(--text-gray); text-transform: uppercase; margin-bottom: 4px;">Web Portal</div>
+            <a href="https://cybercrime.gov.in" id="recovery-bank-website" target="_blank" style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--neon-blue); text-decoration: none;" onmouseover="this.style.textShadow='0 0 5px var(--neon-blue)'" onmouseout="this.style.textShadow='none'">cybercrime.gov.in</a>
+            <p style="font-size: 0.75rem; color: var(--text-gray); margin-top: 4px;">Official government reporting cell for registering cyber fraud incidents.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="cyber-footer">
+    <p>Citizen Cyber Shield © 2026. Status: <span>OPERATIONAL</span></p>
+  </footer>
+
+  <!-- Import app logic controller -->
+  <script src="js/app.js"></script>
+  <script>
+    function updateSOCTime() {
+      const timeEl = document.getElementById('soc-live-time');
+      const now = new Date();
+      timeEl.textContent = `SYSTEM_TIME: ${now.toISOString().replace('T', ' ').substring(0, 19)} UTC`;
+    }
+    setInterval(updateSOCTime, 1000);
+    updateSOCTime();
+    
+    // Initial call to set state
+    updateRecoveryProgress();
+  </script>
+</body>
+</html>
