@@ -1,0 +1,56 @@
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python caching & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# User data, logs & local settings
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+*.log
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Application generated/temp files
+scan_history.csv
+temp_image.png
+temp_*.png
+temp_*.jpg
+temp_*.jpeg
+
+# Datasets (large files should not be in git)
+datasets/
+datasets_clean/
+datasets_raw/
